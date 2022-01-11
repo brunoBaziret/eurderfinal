@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class Customer {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private String id;
+    private UUID id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -20,7 +20,7 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_address_id")
     private Address address;
 
@@ -31,7 +31,6 @@ public class Customer {
     }
 
     public Customer(String firstName, String lastName, String email, Address address, String phoneNumber) {
-        this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -39,7 +38,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 

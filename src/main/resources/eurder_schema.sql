@@ -15,7 +15,7 @@ create table address
 
 create table customer
 (
-    ID uuid:text,
+    ID uuid,
     FIRST_NAME text,
     LAST_NAME text,
     EMAIL text,

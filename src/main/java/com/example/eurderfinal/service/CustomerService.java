@@ -24,11 +24,7 @@ public class CustomerService {
     }
 
     public Customer getCustomer(String id) {
-        for (Customer customer : customerRepository.getAllCustomers()) {
-            if (customer.getId().equals(id)) {
-                return customer;
-            }
-        }
-        throw new NoSuchElementException("Customer not found");
+        return customerRepository.getCustomerById(id);
+//        throw new NoSuchElementException("Customer not found");
     }
 }

@@ -9,28 +9,27 @@ public class Address {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private String id;
+    private UUID id;
 
     @Column(name = "street_name")
-    private  String streetName;
+    private String streetName;
 
     @Column(name = "street_number")
-    private  String streetNumber;
+    private String streetNumber;
 
     @Column(name = "postal_code")
-    private  String postalCode;
+    private String postalCode;
 
     @Column(name = "city_name")
-    private  String cityName;
+    private String cityName;
 
     @Column(name = "country")
-    private  String country;
+    private String country;
 
     public Address() {
     }
 
     public Address(String streetName, String streetNumber, String postalCode, String cityName, String country) {
-        this.id = UUID.randomUUID().toString();
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
@@ -38,13 +37,8 @@ public class Address {
         this.country = country;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public Address setId(String id) {
-        this.id = id;
-        return this;
     }
 
     public String getStreetName() {

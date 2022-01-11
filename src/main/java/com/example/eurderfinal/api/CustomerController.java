@@ -3,6 +3,7 @@ package com.example.eurderfinal.api;
 import com.example.eurderfinal.domain.CreateCustomerDto;
 import com.example.eurderfinal.domain.Customer;
 import com.example.eurderfinal.domain.Mapper;
+import com.example.eurderfinal.domain.ViewCustomerDto;
 import com.example.eurderfinal.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,11 +36,11 @@ public class CustomerController {
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public List<CreateCustomerDto> getAllCustomers() {
+    public List<ViewCustomerDto> getAllCustomers() {
         logger.info("Method 'getAllCustomers' started");
         List<Customer> customerList = customerService.getAllCustomers();
-        List<CreateCustomerDto> customerDtoList = customerList.stream()
-                .map(mapper::toDto)
+        List<ViewCustomerDto> customerDtoList = customerList.stream()
+                .map(mapper::toViewDto)
                 .collect(Collectors.toList());
         logger.info("Method 'getAllCustomers' finished");
         return customerDtoList;
@@ -47,11 +48,11 @@ public class CustomerController {
 
     @GetMapping(path = "{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public CreateCustomerDto getCustomer(@PathVariable("id") String id) {
+    public ViewCustomerDto getCustomer(@PathVariable("id") String id) {
         logger.info("Method 'getCustomer' started");
         Customer customer = customerService.getCustomer(id);
-        CreateCustomerDto createCustomerDto= mapper.toDto(customer);
+        ViewCustomerDto viewCustomerDto = mapper.toViewDto(customer);
         logger.info("Method 'getCustomer' finished");
-        return createCustomerDto;
+        return viewCustomerDto;
     }
 }

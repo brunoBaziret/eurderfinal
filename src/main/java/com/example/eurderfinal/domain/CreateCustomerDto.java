@@ -1,7 +1,6 @@
 package com.example.eurderfinal.domain;
 
-public record CreateCustomerDto(String id,
-                                String firstName,
+public record CreateCustomerDto(String firstName,
                                 String lastName,
                                 String email,
                                 Address address,
