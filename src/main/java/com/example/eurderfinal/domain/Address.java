@@ -8,7 +8,7 @@ import java.util.UUID;
 public class Address {
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private String id;
 
     @Column(name = "street_name")
@@ -30,11 +30,21 @@ public class Address {
     }
 
     public Address(String streetName, String streetNumber, String postalCode, String cityName, String country) {
+        this.id = UUID.randomUUID().toString();
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
         this.cityName = cityName;
         this.country = country;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Address setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getStreetName() {

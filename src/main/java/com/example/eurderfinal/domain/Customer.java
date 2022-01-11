@@ -21,7 +21,7 @@ public class Customer {
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "fk_pet_id")
+    @JoinColumn(name = "fk_address_id")
     private Address address;
 
     @Column(name = "phone_number")
